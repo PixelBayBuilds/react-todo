@@ -18,8 +18,6 @@ const AddTodoForm = ({ onAddTodo }) => {
 
 		onAddTodo(newTodo);
 
-		console.log(newTodo);
-
 		setTodoTitle("");
 	};
 
