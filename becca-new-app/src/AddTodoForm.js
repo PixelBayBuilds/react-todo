@@ -13,7 +13,7 @@ const AddTodoForm = ({ onAddTodo }) => {
 
 		const newTodo = {
 			title: todoTitle,
-			id: Date.now(),
+			id: Date.now(), // Assigning a unique ID using Date.now()
 		};
 
 		onAddTodo(newTodo);
