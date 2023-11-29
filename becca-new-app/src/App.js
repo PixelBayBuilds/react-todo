@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { v4 } from "uuid";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 
@@ -19,7 +18,6 @@ function App() {
 	const addTodo = (newTodo) => {
 		setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
 	};
-	console.log(v4());
 
 	return (
 		<>
