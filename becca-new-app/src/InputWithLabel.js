@@ -5,7 +5,7 @@ const InputWithLabel = ({ id, children, value, onChange, onSubmit }) => {
 
 	useEffect(() => {
 		inputRef.current.focus();
-	}, []);
+	});
 
 	return (
 		<>
