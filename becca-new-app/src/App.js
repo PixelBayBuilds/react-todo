@@ -9,17 +9,12 @@ function App() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const dataPromise = new Promise((resolve, reject) => {
-					setTimeout(() => {
-						resolve({ data: { todoList: [] } });
-					}, 2000);
-				});
-
-				dataPromise.then((result) => {
-					const { todoList: fetchedTodoList } = result.data;
-					setTodoList(fetchedTodoList);
+				setTimeout(() => {
+					const savedTodoList =
+						JSON.parse(localStorage.getItem("savedTodoList")) || [];
+					setTodoList(savedTodoList);
 					setIsLoading(false);
-				});
+				}, 2000);
 			} catch (error) {
 				setIsLoading(false);
 			}
