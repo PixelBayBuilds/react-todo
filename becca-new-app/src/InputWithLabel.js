@@ -19,7 +19,7 @@ const InputWithLabel = ({ id, children, value, onChange, onSubmit }) => {
 					onChange={onChange}
 					ref={inputRef}
 				></input>
-				<button type="submit">Add</button>
+				<button type="submit">Add To Do</button>
 			</form>
 		</>
 	);

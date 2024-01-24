@@ -1,0 +1,16 @@
+/* TodoListItem.module.css */
+
+body {
+	color: rgb(192, 102, 60);
+	font-family: monospace;
+}
+
+button {
+	color: rgb(192, 102, 60);
+	font-family: monospace;
+	background-color: bisque;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: -2px;
+	padding-right: -2px;
+}

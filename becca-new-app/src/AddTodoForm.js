@@ -29,7 +29,7 @@ const AddTodoForm = ({ onAddTodo }) => {
 			onChange={handleTitleChange}
 			onSubmit={handleAddTodo}
 		>
-			Title:
+			Today's Task:
 		</InputWithLabel>
 	);
 };
