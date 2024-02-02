@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import styles from "./InputWithLabel.module.css";
 
 const InputWithLabel = ({ id, children, value, onChange, onSubmit }) => {
@@ -26,5 +27,8 @@ const InputWithLabel = ({ id, children, value, onChange, onSubmit }) => {
 			</form>
 		</>
 	);
+};
+InputWithLabel.propTypes = {
+	onSubmit: PropTypes.func.isRequired,
 };
 export default InputWithLabel;
