@@ -63,32 +63,33 @@ function App() {
 
 	return (
 		<Router>
-			<Routes>
-				<Route
-					path="/"
-					element={
-						<>
-							<h1>Let's Get Work Done</h1>
-							<AddTodoForm onAddTodo={addTodo} />
-							{isLoading ? (
-								<p>Loading...</p>
-							) : (
-								<TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-							)}
-						</>
-					}
-				/>
-				{/* This is the new Route*/}
-				<Route
-					path="/new"
-					element={
-						<>
-							<h1>New Todo List</h1>
-						</>
-					}
-					className={styles.App}
-				/>
-			</Routes>
+			<div className={styles.appContainer}>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<>
+								<h1 className={styles.header}>Let's Get Work Done</h1>
+								<AddTodoForm onAddTodo={addTodo} />
+								{isLoading ? (
+									<p>Loading...</p>
+								) : (
+									<TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+								)}
+							</>
+						}
+					/>
+					{/* This is the new Route*/}
+					<Route
+						path="/new"
+						element={
+							<>
+								<h1 className={styles.subText}>New Todo List</h1>
+							</>
+						}
+					/>
+				</Routes>
+			</div>
 		</Router>
 	);
 }

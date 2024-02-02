@@ -1,6 +1,5 @@
-/* TodoListItem.module.css */
-
-.removeButton {
+/* InputWithLabel.module.css */
+.add {
 	color: rgb(192, 102, 60);
 	font-family: monospace;
 	background-color: bisque;

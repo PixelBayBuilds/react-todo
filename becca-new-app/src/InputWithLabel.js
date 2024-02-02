@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import styles from "./InputWithLabel.module.css";
 
 const InputWithLabel = ({ id, children, value, onChange, onSubmit }) => {
 	const inputRef = useRef(null);
@@ -19,7 +20,9 @@ const InputWithLabel = ({ id, children, value, onChange, onSubmit }) => {
 					onChange={onChange}
 					ref={inputRef}
 				></input>
-				<button type="submit">Add To Do</button>
+				<button type="submit" className={styles.add}>
+					Add To Do
+				</button>
 			</form>
 		</>
 	);
