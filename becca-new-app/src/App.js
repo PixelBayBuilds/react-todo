@@ -4,9 +4,9 @@ import TodoList from "./components/TodoList";
 import AddTodoForm from "./components/AddTodoForm";
 import styles from "./app.module.css";
 
-async function fetchData(setTodoList, setIsLoading) {
+async function fetchData(setTodoList, setIsLoading, sortField, sortOrder) {
 	const viewName = "Grid%20view";
-	const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=${viewName}`;
+	const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=${viewName}&sort[0][field]=${sortField}&sort[0][direction]=${sortOrder}`;
 
 	const options = {
 		method: "GET",
@@ -27,20 +27,7 @@ async function fetchData(setTodoList, setIsLoading) {
 		const fetchedTodoList = result.records || [];
 		console.log("Fetched Todo List from Airtable:", fetchedTodoList);
 
-		const sortedTodoList = fetchedTodoList.sort((objectA, objectB) => {
-			const titleA = (objectA.fields.title || "").toLowerCase();
-			const titleB = (objectB.fields.title || "").toLowerCase();
-
-			if (titleA < titleB) {
-				return -1;
-			} else if (titleA > titleB) {
-				return 1;
-			} else {
-				return 0;
-			}
-		});
-
-		const todos = sortedTodoList.map((record) => ({
+		const todos = fetchedTodoList.map((record) => ({
 			title:
 				record.fields && record.fields.Title ? record.fields.Title : "Untitled",
 			id: record.id,
@@ -71,33 +58,31 @@ function App() {
 		}
 	}, [todoList, isLoading]);
 
-	const addTodo = (newTodo) => {
-		// Index
-		const insertIndex = todoList.findIndex((todo) => {
+	const addTodo = async (newTodo) => {
+		// Add the new todo to the existing list
+		const updatedTodoList = [...todoList, newTodo];
+
+		// Sort the todoList based on current sortOrder and sortField
+		const sortedTodoList = updatedTodoList.sort((a, b) => {
+			const valueA = a[sortField].toLowerCase();
+			const valueB = b[sortField].toLowerCase();
+
 			if (sortOrder === "asc") {
-				return todo[sortField] > newTodo[sortField];
+				return valueA.localeCompare(valueB);
 			} else {
-				return todo[sortField] < newTodo[sortField];
+				return valueB.localeCompare(valueA);
 			}
 		});
 
-		// Insert the new task
-		const updatedTodoList =
-			insertIndex !== -1
-				? [
-						...todoList.slice(0, insertIndex),
-						newTodo,
-						...todoList.slice(insertIndex),
-				  ]
-				: [...todoList, newTodo];
-
-		setTodoList(updatedTodoList);
+		// Update the state with the sorted todoList
+		setTodoList(sortedTodoList);
 	};
 
 	const removeTodo = (id) => {
 		const updatedTodoList = todoList.filter((todo) => todo.id !== id);
 		setTodoList(updatedTodoList);
 	};
+
 	const toggleSortOrder = () => {
 		setSortOrder((prevSortOrder) => (prevSortOrder === "asc" ? "desc" : "asc"));
 	};
