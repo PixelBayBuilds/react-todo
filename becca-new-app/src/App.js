@@ -29,7 +29,7 @@ async function fetchData(setTodoList, setIsLoading, sortField, sortOrder) {
 
 		const todos = fetchedTodoList.map((record) => ({
 			title:
-				record.fields && record.fields.Title ? record.fields.Title : "Untitled",
+				record.fields && record.fields.title ? record.fields.title : "Untitled",
 			id: record.id,
 		}));
 
@@ -46,7 +46,7 @@ function App() {
 	const [todoList, setTodoList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [sortOrder, setSortOrder] = useState("asc");
-	const [sortField, setSortField] = useState("Title");
+	const [sortField, setSortField] = useState("title");
 
 	useEffect(() => {
 		fetchData(setTodoList, setIsLoading, sortField, sortOrder);
@@ -64,8 +64,8 @@ function App() {
 
 		// Sort the todoList based on current sortOrder and sortField
 		const sortedTodoList = updatedTodoList.sort((a, b) => {
-			const valueA = a[sortField].toLowerCase();
-			const valueB = b[sortField].toLowerCase();
+			const valueA = (a[sortField] || "").toLowerCase();
+			const valueB = (b[sortField] || "").toLowerCase();
 
 			if (sortOrder === "asc") {
 				return valueA.localeCompare(valueB);
@@ -108,7 +108,7 @@ function App() {
 									<label>
 										Sort By:
 										<select value={sortField} onChange={handleSortFieldChange}>
-											<option value="Title">Title</option>
+											<option value="title">Title</option>
 											<option value="createdTime">Created Time</option>
 											{/* Add other fields as needed */}
 										</select>
