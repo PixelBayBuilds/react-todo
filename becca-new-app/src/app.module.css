@@ -1,14 +1,29 @@
 .appContainer {
-	background-color: beige;
-	min-height: 100vh;
+	background-color: #cb997e;
+	min-height: 200vh;
+	padding-top: 20px;
+	padding-left: 20px;
 }
 .header {
 	font-size: 48px;
 	font-family: monospace;
-	color: rgb(192, 102, 60);
+	color: #ffe8d6;
+}
+.toggle {
+	color: rgb(255, 255, 255);
+	font-family: monospace;
+	background-color: #b7b7a4;
+	padding-top: 2px;
+	padding-bottom: 4px;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-bottom: 10px;
+	margin-right: 10px;
 }
 .subText {
-	font-size: 24px;
+	font-size: 16px;
+	font-family: monospace;
+	color: #ffe8d6;
 }
 @media screen and (max-width: 425px) {
 	.header {
