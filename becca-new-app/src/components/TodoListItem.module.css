@@ -1,9 +1,9 @@
 /* TodoListItem.module.css */
 
 .removeButton {
-	color: rgb(192, 102, 60);
+	color: rgb(255, 255, 255);
 	font-family: monospace;
-	background-color: bisque;
+	background-color: #b7b7a4;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	padding-left: 2px;

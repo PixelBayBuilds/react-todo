@@ -101,11 +101,11 @@ function App() {
 							<>
 								<h1 className={styles.header}>Let's Get Work Done</h1>
 								<div>
-									<button onClick={toggleSortOrder}>
+									<button className={styles.toggle} onClick={toggleSortOrder}>
 										Toggle Sort Order:{" "}
 										{sortOrder === "asc" ? "Ascending" : "Descending"}
 									</button>
-									<label>
+									<label className={styles.subText}>
 										Sort By:
 										<select value={sortField} onChange={handleSortFieldChange}>
 											<option value="title">Title</option>

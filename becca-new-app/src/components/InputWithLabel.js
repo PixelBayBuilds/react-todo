@@ -20,6 +20,7 @@ const InputWithLabel = ({ id, children, value, onChange, onSubmit }) => {
 					value={value}
 					onChange={onChange}
 					ref={inputRef}
+					className={styles.input}
 				></input>
 				<button type="submit" className={styles.add}>
 					Add To Do
@@ -34,5 +35,6 @@ InputWithLabel.propTypes = {
 	value: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired,
+	label: PropTypes.string.isRequired,
 };
 export default InputWithLabel;
